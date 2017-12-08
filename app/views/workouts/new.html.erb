@@ -1,0 +1,33 @@
+
+  <nav class="navbar navbar-dark bg-dark">
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Workout A</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Workout B</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Link 3</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Link 4</a>
+      </li>
+    </ul>
+  </nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <strong><%= Time.now.strftime("%A, %B %d, %Y") %></strong>
+        <% exercise_array = Workout.exercises("A") %>
+        <% exercise_array.each do |exercise| %>
+          <div>
+            <%= exercise %>
+            <%= number_field(exercise.to_sym, :weight, in: 0.0..100.0, step: 5) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
